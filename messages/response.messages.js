@@ -2,11 +2,19 @@ module.exports = {
   USERS: {
     CREATED: "User created successfully",
     GETALL: "All users recieved",
+    DELETE: "User deleted successfully",
+    GET_ONE: "User fetched successfully",
+    LOGGED_IN: "User fetched successfully",
+  },
+  PRODUCTS: {
+    CREATED: "Product created successfully",
   },
 
   GENERAL: {
     EMAIL_ALREADY_EXIST:
       "Email is already registered, please use different mail.",
+    PRODUCT_ALREADY_EXIST:
+      "Product is already registered, please use different name.",
     GENERAL_ERROR_CONTENT: "Something went wrong. Please try again later.",
     UNAUTHORIZED_USER: "Unauthorized, please login.",
     RESTRICTED_USER: "You are not authorized to do this operation.",

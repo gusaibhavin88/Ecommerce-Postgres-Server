@@ -1,3 +1,5 @@
+const bcrypt = require("bcrypt");
+
 module.exports = (sequelize, DataTypes) => {
   const users = sequelize.define("users", {
     id: {
@@ -30,5 +32,19 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
   });
+
+  users.beforeCreate(async (user, options) => {
+    if (user.changed("password")) {
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(user.password, salt);
+      user.password = hashedPassword;
+    }
+  });
+
+  // This is for login functionality
+  users.prototype.comparePassword = async function (password) {
+    return await bcrypt.compare(password, this.password);
+  };
+
   return users;
 };

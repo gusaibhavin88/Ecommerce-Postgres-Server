@@ -7,7 +7,8 @@ const sendResponse = (
   message,
   data,
   lang = "en",
-  replaceObj = {}
+  replaceObj = {},
+  count
 ) => {
   try {
     statusCode = +statusCode;
@@ -16,8 +17,9 @@ const sendResponse = (
     // console.log(data, "response data");
     res.write(
       JSON.stringify({
-        status: status,
+        status: statusCode,
         message: message,
+        count: count,
         data: statusCode === 500 ? data.message : data,
       })
     );
