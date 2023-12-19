@@ -72,16 +72,15 @@ exports.getAllUsers = async (req, res) => {
   }
 };
 
-exports.deleteUser = async (req, res) => {
+exports.getUser = async (req, res) => {
   try {
-    console.log(req.params);
-    await deleteUserService(req.params.id);
+    const user = await getUserService(req.params.id);
     return sendResponse(
       res,
       constants.WEB_STATUS_CODE.OK,
       constants.STATUS_CODE.SUCCESS,
-      USERS.DELETE,
-      null,
+      USERS.GET_ONE,
+      user,
       req.headers.lang
     );
   } catch (err) {
@@ -97,15 +96,16 @@ exports.deleteUser = async (req, res) => {
   }
 };
 
-exports.getUser = async (req, res) => {
+exports.deleteUser = async (req, res) => {
   try {
-    const user = await getUserService(req.params.id);
+    console.log(req.params);
+    await deleteUserService(req.params.id);
     return sendResponse(
       res,
       constants.WEB_STATUS_CODE.OK,
       constants.STATUS_CODE.SUCCESS,
-      USERS.GET_ONE,
-      user,
+      USERS.DELETE,
+      null,
       req.headers.lang
     );
   } catch (err) {

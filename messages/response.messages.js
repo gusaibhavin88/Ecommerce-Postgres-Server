@@ -8,6 +8,11 @@ module.exports = {
   },
   PRODUCTS: {
     CREATED: "Product created successfully",
+    DELETE: "Product deleted successfully",
+    GET_ONE: "Product fetched successfully",
+    GETALL: "All products recieved",
+    GETALL_REVIEWS: "All Reviews recieved",
+    CREATE_REVIEW: "Review created successfully",
   },
 
   GENERAL: {

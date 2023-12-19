@@ -32,6 +32,21 @@ db.sequelize = sequelize;
 
 db.users = require("../model/user.model.js")(sequelize, DataTypes);
 db.products = require("../model/product.model.js")(sequelize, DataTypes);
+db.reviews = require("../model/review.model.js")(sequelize, DataTypes);
+
+db.products.hasMany(db.reviews, {
+  as: "reviews",
+  foreignKey: "productId",
+});
+
+db.reviews.belongsTo(db.products, {
+  foreignKey: "productId",
+  tagetKey: "id",
+});
+db.reviews.belongsTo(db.users, {
+  foreignKey: "userId",
+  tagetKey: "id",
+});
 
 db.sequelize
   .sync({ alter: true })

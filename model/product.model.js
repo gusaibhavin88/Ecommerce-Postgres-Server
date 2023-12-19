@@ -44,9 +44,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
-    reviews: {
-      type: DataTypes.JSON,
-    },
   });
   return products;
 };
