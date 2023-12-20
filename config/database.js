@@ -33,6 +33,7 @@ db.sequelize = sequelize;
 db.users = require("../model/user.model.js")(sequelize, DataTypes);
 db.products = require("../model/product.model.js")(sequelize, DataTypes);
 db.reviews = require("../model/review.model.js")(sequelize, DataTypes);
+db.orders = require("../model/order.model.js")(sequelize, DataTypes);
 
 db.products.hasMany(db.reviews, {
   as: "reviews",
@@ -41,12 +42,14 @@ db.products.hasMany(db.reviews, {
 
 db.reviews.belongsTo(db.products, {
   foreignKey: "productId",
-  tagetKey: "id",
+  targetKey: "id",
 });
 db.reviews.belongsTo(db.users, {
   foreignKey: "userId",
-  tagetKey: "id",
+  targetKey: "id",
 });
+db.users.hasMany(db.orders, { as: "orders", foreignKey: "userId" });
+db.orders.belongsTo(db.users, { foreignKey: "userId", targetKey: "id" });
 
 db.sequelize
   .sync({ alter: true })

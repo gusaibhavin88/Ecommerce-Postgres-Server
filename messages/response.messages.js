@@ -14,6 +14,12 @@ module.exports = {
     GETALL_REVIEWS: "All Reviews recieved",
     CREATE_REVIEW: "Review created successfully",
   },
+  ORDERS: {
+    CREATED: "Order created successfully",
+    DELETE: "Order deleted successfully",
+    GET_ONE: "Order fetched successfully",
+    GETALL: "All Order recieved",
+  },
 
   GENERAL: {
     EMAIL_ALREADY_EXIST:

@@ -22,14 +22,39 @@ exports.getProductService = async (id) => {
     where: {
       id: String(id),
     },
+    attributes: {
+      exclude: [],
+    },
+    include: [
+      {
+        model: Reviews,
+        as: "reviews",
+        required: true,
+        attributes: {
+          exclude: [],
+        },
+      },
+    ],
   });
-
-  console.log(getProduct);
   return getProduct;
 };
 
 exports.getAllProductsService = async () => {
-  const getAllProducts = await Products.findAll();
+  const getAllProducts = await Products.findAll({
+    attributes: {
+      exclude: [],
+    },
+    include: [
+      {
+        model: Reviews,
+        as: "reviews",
+        required: true,
+        attributes: {
+          exclude: [],
+        },
+      },
+    ],
+  });
   return getAllProducts;
 };
 
